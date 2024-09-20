@@ -2,9 +2,14 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import zipfile
 
-# Membaca data dari CSV
-data = pd.read_csv('data1.csv')
+# Membuka file ZIP dan membaca dataset
+with zipfile.ZipFile("data1.zip", "r") as zip_ref:
+    zip_ref.extractall(".")
+
+# Membaca file CSV setelah diekstrak
+data = pd.read_csv("data1.csv")
 
 # Mengatur tema warna untuk background dan teks
 st.markdown("""
